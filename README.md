@@ -21,7 +21,7 @@ google adk
 ```
 
 ## Challenges:
-Utilising model gemini-1.5-pro because it support function calling.
+Utilising model gemini-1.5-pro (support function calling).
 
 The model come with the limitation of being concise for every requests, not tool calling but desired responses.  
 
