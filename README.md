@@ -15,7 +15,7 @@ Install requirement.txt
 python -m pip install -r requirement.txt
 ```
 
-After .env setting
+After .env settings
 ```bash
 google adk
 ```
