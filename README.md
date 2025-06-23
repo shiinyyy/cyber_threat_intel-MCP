@@ -59,4 +59,4 @@ agent.getIP("192.168.1.100")
 - [ ] Machine learning-based threat prediction
 - [ ] Real-time alerting system
 - [ ] Mobile application
-- [ ] Advanced visualization dashboard
+- [ ] Advanced visualisation dashboard
