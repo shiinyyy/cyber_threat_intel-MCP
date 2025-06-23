@@ -5,7 +5,7 @@ from .tools import (
     get_group_campaigns,
 )
 
-# Declare agent with built-in tool
+# Declare agent with custom tool
 def make_data_agent():
     return LlmAgent(
     name="data_agent",

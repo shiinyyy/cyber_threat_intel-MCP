@@ -1,9 +1,8 @@
 from google.adk.agents import LlmAgent
 from google.adk.tools.agent_tool import AgentTool
-# from CTI_Agent.sub_agents.data_agent import data_agent
-from CTI_Agent.sub_agents.network_agent.agent import make_network_agent
-from CTI_Agent.sub_agents.planning_agent.agent import make_planning_agent
-from CTI_Agent.sub_agents.data_agent.agent import make_data_agent
+from flowCTI.sub_agents.network_agent.agent import make_network_agent
+from flowCTI.sub_agents.planning_agent.agent import make_planning_agent
+from flowCTI.sub_agents.data_agent.agent import make_data_agent
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -14,7 +13,7 @@ planning_agent = make_planning_agent()
 data_agent = make_data_agent()
 
 root_agent = LlmAgent(
-    name="CTI_Agent",
+    name="flowCTI",
     model="gemini-1.5-pro",
     description=(
         "Cyber threat analysis model"
@@ -25,7 +24,7 @@ root_agent = LlmAgent(
             You are the leader of cyber threat intelligent department. You have access to all the latest news on cyber attacks and threats.
             Your core purpose are collect, analyse, and share actionable information about potential and existing threats to enhance an organisation's cybersecurity.
             You need to transform raw data into intelligence that support strategic planning, operational readiness and tactical defense.
-            
+            Delegate task to network agent whenever you need to scan url.
             ## TASKS
             Your mission is to help user identify potential threat in their system , either giving them information, news or access any database.
             You need to rely on other sub-agent to provide you information including IP address analysis, url scanning, MITRE ATT&CK database access for decision making.
@@ -65,62 +64,3 @@ root_agent = LlmAgent(
 )
 if __name__ == "__main__":
     print("Root agent loaded:", root_agent)
-
-# def get_weather(city: str) -> dict:
-#     """Retrieves the current weather report for a specified city.
-
-#     Args:
-#         city (str): The name of the city for which to retrieve the weather report.
-
-#     Returns:
-#         dict: status and result or error msg.
-#     """
-#     if city.lower() == "new york":
-#         return {
-#             "status": "success",
-#             "report": (
-#                 "The weather in New York is sunny with a temperature of 25 degrees"
-#                 " Celsius (77 degrees Fahrenheit)."
-#             ),
-#         }
-#     else:
-#         return {
-#             "status": "error",
-#             "error_message": f"Weather information for '{city}' is not available.",
-#         }
-
-
-# def get_current_time(city: str) -> dict:
-#     """Returns the current time in a specified city.
-
-#     Args:
-#         city (str): The name of the city for which to retrieve the current time.
-
-#     Returns:
-#         dict: status and result or error msg.
-#     """
-
-#     if city.lower() == "new york":
-#         tz_identifier = "America/New_York"
-#     else:
-#         return {
-#             "status": "error",
-#             "error_message": (
-#                 f"Sorry, I don't have timezone information for {city}."
-#             ),
-#         }
-
-#     tz = ZoneInfo(tz_identifier)
-#     now = datetime.datetime.now(tz)
-#     report = (
-#         f'The current time in {city} is {now.strftime("%Y-%m-%d %H:%M:%S %Z%z")}'
-#     )
-#     return {"status": "success", "report": report}
-
-# Output schema
-# class EmailContent(BaseModel):
-#     subject: str = Field(description="The subject should be short and concise")
-#     body: str = Field(description="The body of the email should have a professional tone")
-
-# class EmailAgent(LlmAgent):
-#     email_content: EmailContent

@@ -17,16 +17,6 @@ def getIP(ip: str) -> str:
         "accept": "application/json",
         "x-apikey": VT_API
     }
-    
-    # response = requests.get(url, headers=headers)
-
-    # if response.status_code == 200:
-    #     data = response.json()
-    #     print(json.dumps(data, indent=2))
-    #     return data
-    # else:
-    #     print(f"Error to retrieve: {response.status_code} - {response.text}")
-    #     return None
 
     try:
         print("Making request to:", url)

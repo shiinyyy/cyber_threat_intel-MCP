@@ -1,32 +1,62 @@
 # Cyber Threat Intelligence (CTI Agent)
-A basic multi-agent CTI model designed to support decision-making of a SOC. Each agent includes tools for scanning and generating reports on cyber threats. The architect is extensible, capable of identifying threat groups, their techniques and associated campaigns.
+A comprehensive multi-agent CTI model designed to support decision-making of a SOC. Each agent includes tools for scanning and generating reports on cyber threats. The architect is extensible, capable of identifying threat groups, their techniques and associated campaigns.
 
 ## GOOGLE-HACKATHON-2025
-tools: google-adk, VirusTotal, MITRE ATT&CK
+**Tools**: Google ADK, VirusTotal, MITRE ATT&CK
+
+## Demo
+[![CTI Agent Demo](https://img.youtube.com/vi/IaPbNhp40DM/0.jpg)](https://youtu.be/IaPbNhp40DM)
+
+## Architecture diagram
+![CTI Agent Architecture](assets/CTI_diagram.png)
+
+*View the full design in [Figma](https://www.figma.com/design/LYqo4ivVCCmY4kaLMKqpOW/CTI-Agent?node-id=0-1&m=dev&t=jgSxTC92D5r9DVEh-1)*
 
 ## Details
-Activate venv
 ```bash
+# Activate virtual environment
 source venv/bin/activate
+
+# Install dependencies
+python3 -m pip install -r requirements.txt
+
+# Environment settings
+cp .env.example .env
+
+# After .env settings
+adk web
 ```
 
-Install requirement.txt
-```bash
-python -m pip install -r requirement.txt
+## Example Usage
+```python
+# Scan a suspicious URL
+agent.scanURL("https://suspicious-site.com")
+
+# Get threat intelligence
+agent.get_threat_intelligence("group")
+
+# Analyse IP address
+agent.getIP("192.168.1.100")
 ```
 
-After .env settings
-```bash
-google adk
-```
+## Technical Challenges & Solutions
 
-## Challenges:
-Utilising model gemini-1.5-pro (support function calling).
+### Challenges Faced:
+- **Model Limitations**: Utilising Gemini 1.5 Pro with function calling constraints
+- **Response Optimisation**: Model tends to be concise instead of providing detailed tool-calling responses
+- **Tool Integration**: Built-in tools cannot run alongside custom tools - agents need to be wrapped as tools
+- **Performance**: Database access consumes significant time - implemented separate functions for efficiency
+- **Context Management**: Model context, description, and instructions need to be robust and comprehensive
 
-The model come with the limitation of being concise for every requests, not tool calling but desired responses.  
+### Solutions Implemented:
+- **Multi-Agent Architecture**: Separated concerns across specialized agents
+- **Tool Wrapping**: Successfully wrapped planning agent as a tool for seamless integration
+- **Optimised Functions**: Implemented efficient database access patterns
+- **Robust Instructions**: Developed comprehensive agent descriptions and instructions
 
-Built-in tool cannot run alongside with custom-tool -> The agent need to be wrapped as tool.
-
-Accessing database consumes a good amount of time, separate functions efficiently enhance performing process.
-
-For model context, description and instruction need to be robust.
+## 🗺️ Roadmap
+- [ ] Integration with additional threat feeds
+- [ ] Machine learning-based threat prediction
+- [ ] Real-time alerting system
+- [ ] Mobile application
+- [ ] Advanced visualization dashboard

@@ -10,8 +10,3 @@ def make_network_agent():
     instruction="You are a network agent who can handle network-related threat intelligence tasks.",
     tools=[getIP, url_parsing, scanURL]
 )
-# testing
-# data = getIP("192.168.0.107")
-# if data:
-#     ip_parsing(data)
-# scanURL("minhducdo.com")
