@@ -54,7 +54,7 @@ agent.getIP("192.168.1.100")
 - **Optimised Functions**: Implemented efficient database access patterns
 - **Robust Instructions**: Developed comprehensive agent descriptions and instructions
 
-## 🗺️ Roadmap
+## Roadmap
 - [ ] Integration with additional threat feeds
 - [ ] Machine learning-based threat prediction
 - [ ] Real-time alerting system
